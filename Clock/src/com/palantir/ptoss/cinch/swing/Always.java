@@ -181,7 +181,7 @@ public @interface Always {
 	                            if (ofm == null) {
 	                                throw new BindingException("could not find bindable method: " + call);
 	                            }
-	                            int delay = 1000;
+	                            int delay = 500;
 	                            ActionListener actionListener = new ActionListener() {
 	                                public void actionPerformed(ActionEvent e) {
 	                                    try {
@@ -196,7 +196,7 @@ public @interface Always {
 	                                    }
 	                                }
 	                            };
-	        					Timer timer = new Timer(1,actionListener);
+	        					Timer timer = new Timer(delay,actionListener);
 	                            timer.start();
 	                            aalMethod.invoke(actionObject, actionListener);
 	                        }   
