@@ -140,7 +140,7 @@ public class AlwaysBindingExample {
     private final JTextField rgbField = new JTextField();
 
     @Bound(to = "standardTime")
-    @Always(call = "updateTime")
+    @Always(call = "updateTime", delay = 500)
     private final JTextField standardTimeField = new JTextField();
 
 

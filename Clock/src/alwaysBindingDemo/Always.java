@@ -46,7 +46,8 @@ public @interface Always {
      * The name of the method to call when the action occurs. Must be accessible in the
      * {@link BindingContext}.
      */
-    String call();
+	String call();
+	int delay();
 
     /**
      * Inner utility class used to wire {@link Action} bindings.
@@ -66,8 +67,9 @@ public @interface Always {
             for (Field field : actions) {
                 Always always = field.getAnnotation(Always.class);
                 String call = always.call();
+                int delay = always.delay();
                 try {
-                    wire(call, field, context);
+                    wire(delay, call, field, context);
                 } catch (Exception e) {
                     throw new BindingException("could not wire up @Always on " +
                             field.getName(), e);
@@ -85,7 +87,7 @@ public @interface Always {
          * @param context the {@link BindingContext}
          */
 
-	        private static void wire(String call, Field field, BindingContext context)
+	        private static void wire(int delay, String call, Field field, BindingContext context)
 	                throws SecurityException, NoSuchMethodException, IllegalArgumentException,
 	                        IllegalAccessException, InvocationTargetException {
 	                            Method aalMethod = field.getType().getMethod("addActionListener", ActionListener.class);
@@ -94,7 +96,6 @@ public @interface Always {
 	                            if (ofm == null) {
 	                                throw new BindingException("could not find bindable method: " + call);
 	                            }
-	                            int delay = 500;
 	                            ActionListener actionListener = new ActionListener() {
 	                                public void actionPerformed(ActionEvent e) {
 	                                    try {
