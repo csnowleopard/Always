@@ -1,14 +1,30 @@
-Notes:
+Edit: fixed issue in the example that relied on an inactive component.
 
-"Always" requires a Jframe sub-component (JTextArea, etc.) 
-that can handle ActionListeners which are to be bound to that sub-component.
+The Always binding calls a controller method specified by the "call =
+"insertControllerMethodHere"" at an interval specified in the second
+parameter of the binding call, "delay = intDelayInMillisecondsHere"
 
-The IntroCinchMVC.java file is most likely the one to go to regarding the mechanics of this Binding. 
-Although there's a lot of the original code, it was shaping up into a RGB/Color based clock and most likely will continue.
+It's called Always, because if one were to set the delay param to the
+smallest non-negative and non-zero integer, it would always call the
+method.
 
-If you're actually still reading this, what the aforementioned .java file does is simply enable a Timer
-that fires off ActionListeners, thus still requires the binding to a "dummy" sub-component (could be a displayed 
-text box, though).
+It can be used in conjunction with other bindings, as a secondary
+binding, which would be the goal here, as it should logically call a
+method to update the aspect of the model, while the primary binding
+links the model/view part of that same aspect.
 
-Given that this binding was pre-existing, the continuation of this clock project would have been more of 
-a (hopefully) successful conclusion with this commit, but then again it's all about learning and coding =]
+It's useful when the JFrame needs to update without user intervention
+(i.e. an Event), as with a clock in the given example.
+
+The Always binding works the same as the other bindings except for the
+one following item:
+
+Make sure that any applications that implement this binding set their
+bindings variable equal to
+"AlwaysExtensionBindings.alwaysExtensionBindings()" not the default
+used in examples.
+
+Clock/src/alwaysBindingDemo is the path where one can first find the
+binding, secondly the java file which must be called for the new
+bindings variable, and lastly an example that shows how this is
+implemented in a text-based RGBClock
