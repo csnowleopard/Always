@@ -61,6 +61,7 @@ public class AlwaysBindingExample {
         private String standardTime = "";
 
         public String getStandardTime() {
+        	myCal = Calendar.getInstance().getTime();
             return myCal.toString();
         }
 
@@ -84,7 +85,6 @@ public class AlwaysBindingExample {
         }
 
         public Icon getCurrentColorImage() {
-        	myCal = Calendar.getInstance().getTime();
         	ImageIcon img = new ImageIcon();
         	BufferedImage bi = new BufferedImage(100, 100, BufferedImage.TYPE_INT_RGB);
         	Graphics2D g = bi.createGraphics();
@@ -140,12 +140,12 @@ public class AlwaysBindingExample {
     private final JTextField rgbField = new JTextField();
 
     @Bound(to = "standardTime")
-    @Always(call = "updateTime", delay = 500)
+    @Always(call = "updateTime", delay = 250)
     private final JTextField standardTimeField = new JTextField();
 
 
-    @Bound(to = "currentColorImage")
-    private final JLabel messageLabel = new JLabel((Icon)controller.getColorIcon());
+    //@Bound(to = "currentColorImage")
+    //private final JLabel messageLabel = new JLabel((Icon)controller.getColorIcon());
 
     public AlwaysBindingExample() {
         initializeInterface();
