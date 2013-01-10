@@ -1,0 +1,14 @@
+Notes:
+
+"Always" requires a Jframe sub-component (JTextArea, etc.) 
+that can handle ActionListeners which are to be bound to that sub-component.
+
+The IntroCinchMVC.java file is most likely the one to go to regarding the mechanics of this Binding. 
+Although there's a lot of the original code, it was shaping up into a RGB/Color based clock and most likely will continue.
+
+If you're actually still reading this, what the aforementioned .java file does is simply enable a Timer
+that fires off ActionListeners, thus still requires the binding to a "dummy" sub-component (could be a displayed 
+text box, though).
+
+Given that this binding was pre-existing, the continuation of this clock project would have been more of 
+a (hopefully) successful conclusion with this commit, but then again it's all about learning and coding =]
