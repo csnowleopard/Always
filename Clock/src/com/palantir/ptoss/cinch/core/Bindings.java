@@ -16,10 +16,11 @@ package com.palantir.ptoss.cinch.core;
 import java.util.Collection;
 import java.util.List;
 
+import alwaysBindingDemo.Always;
+
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import com.palantir.ptoss.cinch.swing.Action;
-import com.palantir.ptoss.cinch.swing.Always;
 import com.palantir.ptoss.cinch.swing.Bound;
 import com.palantir.ptoss.cinch.swing.BoundExtent;
 import com.palantir.ptoss.cinch.swing.BoundLocation;
@@ -57,7 +58,7 @@ public class Bindings {
             .add(new CallOnUpdate.Wiring())
             .add(new EnabledIf.Wiring())
             .add(new Action.Wiring())
-            .add(new Always.Wiring())
+            //.add(new Always.Wiring())
             .add(new VisibleIf.Wiring())
             .add(new OnClick.Wiring())
             .add(new OnChange.Wiring())
